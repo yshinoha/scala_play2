@@ -1,0 +1,87 @@
+import org.specs2._
+class StackSpec extends Specification { def is = s2"""
+
+  ${"Specification for a Stack with a limited capacity".title}
+
+  A Stack with limited capacity can either be:                             $endp
+    1. Empty                                                               $anEmptyStack
+    2. Normal (i.e. not empty but not full)                                $aNormalStack
+    3. Full                                                                $aFullStack
+                                                                           """
+
+  def anEmptyStack =                                                       s2"""
+    An empty stack should
+      have a size == 0                                                     ${empty().e1}
+      throw an exception when sent #top                                    ${empty().e2}
+      throw an exception when sent #pop                                    ${empty().e3}
+                                                                           """
+
+  def aNormalStack =                                                       p^s2"""
+    A normal stack should
+      behave like a non-empty stack                                        ${nonEmptyStack(newNormalStack)}
+      add to the top when sent #push                                       ${nonFullStack().e1}
+                                                                           """
+
+  def aFullStack =                                                         p^s2"""
+    A full stack should
+      behave like a non-empty stack                                        ${nonEmptyStack(newFullStack)}
+      throw an exception when sent #push                                   ${fullStack().e1}
+                                                                           """
+
+  def nonEmptyStack(stack: =>SizedStack) =                                 t^s2"""
+    have a size > 0                                                        ${nonEmpty(stack).size}
+    return the top item when sent #top                                     ${nonEmpty(stack).top1}
+    not remove the top item when sent #top                                 ${nonEmpty(stack).top2}
+    return the top item when sent #pop                                     ${nonEmpty(stack).pop1}
+    remove the top item when sent #pop                                     ${nonEmpty(stack).pop2}
+                                                                           """
+  /** stacks creation */
+  def newEmptyStack  = SizedStack(maxCapacity = 10, size = 0)
+  def newNormalStack = SizedStack(maxCapacity = 10, size = 2)
+  def newFullStack   = SizedStack(maxCapacity = 10, size = 10)
+
+  /** stacks examples */
+  case class empty() {
+    val stack = newEmptyStack
+
+    def e1 = stack.size must_== 0
+    def e2 = stack.top must throwA[NoSuchElementException]
+    def e3 = stack.pop must throwA[NoSuchElementException]
+  }
+
+  case class nonFullStack() {
+    val stack = newNormalStack
+
+    def e1 = {
+      stack push (stack.size + 1)
+      stack.top must_== stack.size
+    }
+  }
+
+  case class fullStack() {
+    val stack = newFullStack
+
+    def e1 = stack push (stack.size + 1) must throwAn[Error]
+  }
+  
+  def nonEmpty(createStack: =>SizedStack) = new {
+    val stack = createStack
+    def size = stack.size > 0
+
+    def top1 = stack.top must_== stack.size
+    def top2 = {
+      stack.top
+      stack.top must_== stack.size
+    }
+
+    def pop1 = {
+      val topElement = stack.size
+      stack.pop must_== topElement
+    }
+
+    def pop2 = {
+      stack.pop
+      stack.top must_== stack.size
+    }
+  }
+}

@@ -1,0 +1,10 @@
+@(message:String,userList:List[Map[Symbol, String]])
+@main("show scala templates") {
+    <h1>@message</h1>
+    <ul>
+    @userList.map { user =>
+      <li><p>@user('name) -> @user('email)</p></li>
+    }
+    </ul>
+}
+
