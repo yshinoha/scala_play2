@@ -12,4 +12,5 @@ libraryDependencies ++= Seq(
   "org.skinny-framework" %% "skinny-orm"              % "0.9.25"
 )     
 
+
 play.Project.playScalaSettings
