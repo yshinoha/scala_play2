@@ -7,7 +7,7 @@ import play.api.mvc.Results._
 import play.api.db._
 import anorm._ 
 
-import models.User
+//import models.User
 
 object TemplateController extends Controller {
   def show = Action {
@@ -20,7 +20,7 @@ object TemplateController extends Controller {
                            
     //for(user <- users) println(user)
 
-    println(User.countAll())
+    //println(User.countAll())
                                 
     Ok(views.html.index("anorm"))
     //Ok(views.html.mydb("DBつないでみたよ", users))
