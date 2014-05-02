@@ -1,0 +1,50 @@
+header.g {
+  background: linear-gradient(to bottom,#fff 0,#f4f4f4 88%);
+}
+
+header.g .wrap {
+  border-top: 4px solid #53D34A;
+}
+
+div.gradation-bar {
+  height: 5px;
+  /*background: -webkit-gradient(linear,left top,right top,color-stop(0%,#c678af),color-stop(16.6%,#c678af),color-stop(16.7%,#ed7971),color-stop(33.2%,#ed7971),color-stop(33.3%,#f8b757),color-stop(49.8%,#f8b757),color-stop(49.9%,#fff462),color-stop(66.4%,#fff462),color-stop(66.5%,#c0db81),color-stop(83%,#c0db81),color-stop(83.0%,#7fcef4),color-stop(100%,#7fcef4),color-stop(100%,#bbe5f9));*/
+}
+
+main.container section {
+}
+
+main.container section article{
+  margin: 0 10px 15px;
+  -webkit-border-radius: 4px;
+  border-color: rgba(0, 0, 0, .07) rgba(0, 0, 0, .11) rgba(0, 0, 0, .18);
+  -webkit-border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+}
+
+i.img {
+  -webkit-user-select: none;
+  height: 0;
+  width: 100%;
+}
+
+.img {
+  border: 0;
+  display: inline-block;
+  vertical-align: top;
+}
+
+
+footer.g {
+  background: #fff;
+}
+
+footer.g address {
+  clear: both;
+  padding: 8px 12px;
+  font-size: 84%;
+  text-align: center;
+  font-style: normal;
+  background: #f2efe3;
+}

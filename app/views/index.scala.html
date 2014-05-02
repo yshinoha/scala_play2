@@ -1,10 +1,50 @@
 @(message: String)
 
 @main("Welcome to Play") {
-<div ng-app>
+<header class='g'>
+  <div class='wrap'>
+    <h1><a href='/'>まだタイトルも何もない</a></h1>
+  </div>
+</header>
+<div class='gradation-bar'></div>
+
+<main ng-app class='container'>
+  <section>
+    <article>
+      <header>チューリップ</header>
+      <main>
+        <i class='img' style='background-image: url("https://farm3.staticflickr.com/2901/14053822803_b2f446ea3b_h.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -webkit-background-size: 100% 100%;
+        padding-bottom: 66.25%;'></i>
+      </main>
+      <footer>2014/04/27</footer>
+    </article>
+
+    <article>
+      <header>チューリップ</header>
+      <main>
+        <i class='img' style='background-image: url("https://farm6.staticflickr.com/5321/14040985986_d32d7f772b_k.jpg");
+        background-repeat: no-repeat;
+        background-size: 100% 100%;
+        -webkit-background-size: 100% 100%;
+        padding-bottom: 66.25%;'></i>
+      </main>
+      <footer>2014/04/27</footer>
+    </article>
+  </section>
+
   <label>Name:</label>
   <input type="text" ng-model="yourName" placeholder="Enter a name here">
   <hr>
   <h1>Hello {{yourName}}!</h1>
-</div>
+</main>
+
+<footer class='g'>
+  <address>
+    <p class="copyright">Copyright 2014-2014 Yuki Shinohara. All Rights Reserved.</p>
+    <p class="rights">サイト内の文章、画像などの著作物は著者個人に属します。文章・写真などの複製、無断転載を禁止します。</p>
+  </address>
+</footer>
 }
