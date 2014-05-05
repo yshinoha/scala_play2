@@ -1,6 +1,6 @@
-@(message: String)
+@(message: String, json: play.api.libs.json.JsValue)
 
-@main("Welcome to Play") {
+@main(message) {
 <header class='g'>
   <div class='wrap'>
     <h1><a href='/'>まだタイトルも何もない</a></h1>
@@ -10,6 +10,7 @@
 
 <main ng-app class='container'>
   <section>
+    (@json \ "title").as[String]
     <article>
       <header>チューリップ</header>
       <main>
